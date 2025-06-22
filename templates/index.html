@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Voice Gender Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Upload a Voice File</h1>
+  <form action="/predict" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file" accept="audio/*" required>
+    <button type="submit">Predict Gender</button>
+  </form>
+  {% if prediction %}
+    <h2>Prediction: {{ prediction }}</h2>
+    <audio controls src="{{ url_for('static', filename=audio) }}"></audio>
+  {% endif %}
+</body>
+</html>
